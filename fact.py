@@ -1,4 +1,4 @@
-n = int(input('Enter the value of n:'))
+n = int(input('Enter the value of n to find its factorial:'))
 
 
 def facto(n):
