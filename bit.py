@@ -1,4 +1,4 @@
-a = 10
+a = 200
 b = 15
 bina = bin(a)
 binb = bin(b)
