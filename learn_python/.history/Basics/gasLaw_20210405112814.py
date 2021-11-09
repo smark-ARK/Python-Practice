@@ -1,0 +1,5 @@
+n = (p*v)/(r*t)
+p = float(input(''))
+v = float(input(''))
+r = float(input(''))
+t = float(input(''))

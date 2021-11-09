@@ -1,0 +1,12 @@
+def draw_line(tick_leangth, tick_label=''):
+    line = '-'*tick_leangth
+    if tick_label:
+        line += ' '+tick_label
+    print(line)
+
+
+def draw_interval(center_leangth):
+    if center_leangth > 0:
+        draw_interval(center_leangth-1)
+        draw_line(center_leangth)
+        draw_interval(center_leangth-1)

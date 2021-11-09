@@ -1,0 +1,12 @@
+S = [1, 2, 3, 4, 8, 7, 6, 5]
+
+
+def binary_sum(S, start, stop):
+
+    if start >= stop:  # zero elements in slice
+        return 0
+    elif start == stop-1:  # one element in slice
+        return S[start]
+    else:  # two or more elements in slice
+        mid = (start + stop) // 2
+        return binary_sum(S, start, mid) + binary_sum(S, mid, stop)
