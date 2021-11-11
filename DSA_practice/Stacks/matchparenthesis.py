@@ -15,14 +15,21 @@ class Stack:
         if self.is_empty():
             raise IndexError('Stack is already empty')
         return self._data.pop()
-l=[3,4,5,6,7,8,9]
-s=Stack()
-for i in l:
-    s.push(i)
-print(s.top())
-k=0
-while not s.is_empty():
-    l[k]=s.pop()
-    k+=1
     
-print(l)
+
+def match(e):
+    lefty='({['
+    righty=')}]'
+    S=Stack()
+    for c in e:
+        if c in lefty:
+            S.push(c)
+        elif c in righty:
+            if S.is_empty():
+                return False
+            if righty.index(c) != lefty.index(S.pop()):
+                return False   
+    return S.is_empty()
+                
+ex='([{}])'
+print(match(ex))
