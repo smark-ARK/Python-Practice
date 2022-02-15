@@ -1,4 +1,3 @@
-
 class CQueue:
     def __init__(self,Dcap):
         self._Dcap=Dcap
