@@ -44,3 +44,19 @@ class SinglyLinkedList:
         self.tail = newest
         self.size += 1
 
+    def sec_last(self):
+        p1 = self.head
+        p2 = self.head.next
+        for i in range(0, self.size):
+            if p2 == self.tail:
+                return p1.element
+            else:
+                p1 = p1.next
+                p2 = p2.next
+
+
+q1 = SinglyLinkedList()
+q1.enqueue(5)
+q1.enqueue(6)
+q1.enqueue(7)
+print(q1.sec_last())
