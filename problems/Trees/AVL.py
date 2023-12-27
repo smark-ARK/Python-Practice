@@ -81,6 +81,12 @@ def get_height(root):
     return root.height
 
 
+def min_node(root):
+    if root is None or root.left is None:
+        return root
+    return min_node(root.left)
+
+
 def right_rotate(unbalanced):
     new_root = unbalanced.left
     unbalanced.left = unbalanced.left.right
@@ -131,6 +137,48 @@ def insert(root, val):
     return root
 
 
+def delete_node(root, val):
+    if root is None:
+        return root
+    if val < root.data:
+        root.left = delete_node(root.left, val)
+    elif val > root.data:
+        root.right = delete_node(root.right, val)
+    else:
+        if root.left is None:
+            temp = root.right
+            root = None
+            return temp
+        if root.right is None:
+            temp = root.left
+            root = None
+            return temp
+        temp = min_node(root.right)
+        root.data = temp.data
+        root.right = delete_node(root.right, temp.data)
+    balance = get_balance(root)
+    if balance > 1 and get_balance(root.left) >= 0:
+        return right_rotate(root)
+    if balance < -1 and get_balance(root.right) <= 0:
+        return left_rotate(root)
+    if balance > 1 and get_balance(root.left) < 0:
+        left_rotate(root.left)
+        return right_rotate(root)
+    if balance < -1 and get_balance(root.right) > 0:
+        right_rotate(root.right)
+        return left_rotate(root)
+    return root
+
+
+def delete_avl(root):
+    if not root:
+        return
+    root.left = None
+    root.right = None
+    root = None
+    return
+
+
 new_avl = AVLNode(10)
 new_avl = insert(new_avl, 20)
 new_avl = insert(new_avl, 30)
@@ -148,5 +196,9 @@ print("\n----Postorder-----")
 postorder_traversal(new_avl)
 print("\n----Levelorder-----")
 levelorder_traversal(new_avl)
+delete_node(new_avl, 40)
+print("\n----Levelorder-----")
 print("\n-----Search-----")
+levelorder_traversal(new_avl)
+
 search(new_avl, 10)
