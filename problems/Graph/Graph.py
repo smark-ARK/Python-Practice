@@ -71,4 +71,3 @@ print(new_graph.get_vertex(1))
 for v in new_graph:
     for w in v.get_neighbors():
         print(f"({v.get_key()}, {w.get_key()})")
-        print(v.get_neighbors())
