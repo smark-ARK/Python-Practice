@@ -1,4 +1,5 @@
-from Graph import Graph
+from pythonds3.graphs import Graph
+from bfs import bfs
 
 
 def build_graph(path):
@@ -21,3 +22,21 @@ def build_graph(path):
 word_graph = build_graph(
     "/home/ark/programming/learning/Python-Practice/problems/Graph/words.txt"
 )
+
+# for v in word_graph:
+#     for w in v.get_neighbors():
+#         print(f"({v.get_key()}, {w.get_key()})")
+
+
+res = bfs(word_graph.get_vertex("cove"), "sank")
+print(res.distance)
+
+
+def traverse(starting_vertex):
+    current = starting_vertex
+    while current:
+        print(current.key)
+        current = current.previous
+
+
+traverse(word_graph.get_vertex("sank"))
